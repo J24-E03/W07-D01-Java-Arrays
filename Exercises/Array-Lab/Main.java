@@ -54,6 +54,7 @@ public class Main {
         System.out.println("In " + Arrays.toString(sortedArray));
         System.out.println(foundIndex == -1 ? "The number doesn't exist in the array!" : "The first appearance index of the number " + target + " is :" + foundIndex);
 
+        sc.close();
 
     }
 
