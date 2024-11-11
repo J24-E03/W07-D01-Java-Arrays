@@ -1,26 +1,17 @@
-This code is a Java program that performs various operations on arrays. Each exercise demonstrates a specific array operation. Let’s go through each exercise and explain what each part does in detail.
+Let’s go through each part of the code, explaining it in detail.
 
-### Overview of the Program
+### Class Overview and Main Method
 
-This Java class, `Arrays`, defines a series of methods to work with arrays. When you run the program (starting from the `main` method), it calls the `Arrays` constructor to initialize and display the results of each array operation.
+This Java program, `Arrays`, contains exercises for different array manipulations. Each exercise showcases a different operation, and it’s structured so that when the `main` method runs, the constructor `Arrays()` is called, which contains all the exercises.
 
-### Constants
+### Constants and Random Object
 
-- `PRINTF_STRINGS_2` and `PRINTF_STRINGS_3` are constants (variables that don’t change) used to format output. They define templates for printing two or three lines respectively.
+- `PRINTF_STRINGS_2` and `PRINTF_STRINGS_3` are constants used to format the output.
+- `private final Random random = new Random();` creates a `Random` object used for generating random numbers in a more controlled way than `Math.random()`.
 
-### Main Method
+### Constructor and Exercises
 
-```java
-public static void main(String[] args) {
-    new Arrays();
-}
-```
-
-The `main` method starts the program by creating a new instance of the `Arrays` class, which runs the constructor `Arrays()`.
-
-### Constructor
-
-The constructor `Arrays()` contains all the exercises and outputs their results. Here’s what each exercise does:
+In the `Arrays` constructor, each exercise is run sequentially, and results are printed to the console. Let’s examine each exercise.
 
 ### Exercise 1: Create and Initialize an Array
 
@@ -37,7 +28,7 @@ System.out.printf(PRINTF_STRINGS_2,
 );
 ```
 
-This exercise creates an array named `simpleArray` with five slots (elements). Each slot is initialized with numbers 1 through 5. The `System.out.printf` statement prints "Exercise 1:" followed by the contents of the array in a formatted way.
+Here, an array of five integers is created and initialized with values from 1 to 5. This array is then printed using `System.out.printf` and the helper method `java.util.Arrays.toString` to convert the array to a readable format.
 
 ### Exercise 2: Create a Randomized Array
 
@@ -48,7 +39,7 @@ System.out.printf(PRINTF_STRINGS_2,
 );
 ```
 
-This exercise uses the `createRandomArray` method to generate an array of five random integers between 0 and 99. The generated array is printed.
+This exercise uses the `createRandomArray` method to generate an array of five random numbers. The contents of the array are then printed.
 
 #### `createRandomArray` Method
 
@@ -56,13 +47,13 @@ This exercise uses the `createRandomArray` method to generate an array of five r
 public int[] createRandomArray(int size) {
     int[] randomArray = new int[size];
     for (int i = 0; i < size; i++) {
-        randomArray[i] = (int) (Math.random() * 100);
+        randomArray[i] = this.random.nextInt(1000);
     }
     return randomArray;
 }
 ```
 
-This method creates an array of a specified `size`, fills it with random numbers, and returns it. It uses `Math.random()` to generate numbers between 0 and 99.
+This method creates an integer array with a specified `size` and fills it with random numbers between 0 and 999 using `random.nextInt(1000)`. The array is then returned.
 
 ### Exercise 3: Find Largest and Smallest Numbers in an Array
 
@@ -74,7 +65,7 @@ System.out.printf(PRINTF_STRINGS_2,
 );
 ```
 
-This exercise defines an array with specific values and uses the `findLargestNumber` method to find the smallest and largest numbers. The method returns these values in an array, which is printed.
+This exercise defines an array with specific values and uses the `findLargestNumber` method to find and print the smallest and largest numbers in the array.
 
 #### `findLargestNumber` Method
 
@@ -94,7 +85,11 @@ public int[] findLargestNumber(int[] array) {
 }
 ```
 
-This method finds the largest and smallest numbers by looping through the array and checking each element. It returns an array with the smallest and largest numbers.
+- **Initialize**: The method starts by setting both `largest` and `smallest` to the first element in the array.
+- **Loop Through Array**: It iterates over each element, comparing each one:
+    - If an element is larger than `largest`, `largest` is updated.
+    - If an element is smaller than `smallest`, `smallest` is updated.
+- **Return**: It returns an array containing the smallest and largest values.
 
 ### Exercise 4: Sum of Array Elements
 
@@ -107,7 +102,7 @@ System.out.printf(PRINTF_STRINGS_3,
 );
 ```
 
-This exercise generates an array with 10 random integers and then uses the `sumArrayElements` method to calculate the total sum of all elements in the array.
+This exercise generates an array with 10 random numbers and uses the `sumArrayElements` method to calculate the sum, which is printed alongside the array contents.
 
 #### `sumArrayElements` Method
 
@@ -121,7 +116,9 @@ public int sumArrayElements(int[] array) {
 }
 ```
 
-This method loops through the array, adds each element to the variable `sum`, and returns the total.
+- **Initialize**: Sets a variable `sum` to 0.
+- **Loop and Add**: For each element in the array, it adds the element’s value to `sum`.
+- **Return**: Returns the total sum after all elements are added.
 
 ### Exercise 5: Count Odd and Even Numbers in an Array
 
@@ -134,7 +131,7 @@ System.out.printf(PRINTF_STRINGS_3,
 );
 ```
 
-This exercise creates a random array and uses the `countOddEvenNumbers` method to count how many numbers are odd or even.
+This exercise counts the odd and even numbers in an array of 10 random numbers using `countOddEvenNumbers`.
 
 #### `countOddEvenNumbers` Method
 
@@ -153,7 +150,11 @@ public int[] countOddEvenNumbers(int[] array) {
 }
 ```
 
-This method checks each element to see if it’s even or odd, counting how many fall into each category. It returns an array with two values: the count of odd and even numbers.
+- **Initialize Counters**: `odd` and `even` are set to 0.
+- **Loop and Check**: Each element is checked:
+    - If it’s even (`j % 2 == 0`), `even` is incremented.
+    - Otherwise, `odd` is incremented.
+- **Return**: Returns an array with counts of odd and even numbers.
 
 ### Exercise 6: Find Index of a Number in an Array
 
@@ -166,7 +167,7 @@ System.out.printf(PRINTF_STRINGS_3,
 );
 ```
 
-This exercise uses the `findNumberIndex` method to find the index of a specific number in the array (in this case, the number at position 5).
+This exercise finds the index of a specific number (in this case, the number at index 5) in an array using `findNumberIndex`.
 
 #### `findNumberIndex` Method
 
@@ -181,7 +182,8 @@ public int findNumberIndex(int[] array, int number) {
 }
 ```
 
-This method loops through the array, returning the index of the first occurrence of `number`. If it doesn’t find the number, it returns `-1`.
+- **Loop and Compare**: Each element is checked to see if it matches `number`.
+- **Return Index**: If a match is found, it returns the index of that element. If no match is found, it returns `-1`.
 
 ### Exercise 7 - Bonus: Rotate Array Elements
 
@@ -194,7 +196,7 @@ System.out.printf(PRINTF_STRINGS_3,
 );
 ```
 
-This exercise creates a random array and uses the `rotateArrayElements` method to reverse the order of its elements.
+This exercise reverses the order of an array’s elements using `rotateArrayElements`.
 
 #### `rotateArrayElements` Method
 
@@ -210,7 +212,9 @@ public int[] rotateArrayElements(int[] array) {
 }
 ```
 
-This method creates a new array with the elements in reverse order.
+- **Initialize Reverse Index**: `index` starts at the end of the array (`array.length - 1`).
+- **Reverse Elements**: Each element from the original array is assigned to `rotatedArray` in reverse order.
+- **Return**: Returns the rotated array.
 
 ### Exercise 8 - Bonus: Binary Search
 
@@ -225,8 +229,10 @@ System.out.printf(PRINTF_STRINGS_3,
 );
 ```
 
-This exercise uses binary search to locate a specified element (`byteKey`) in an array. **Note**: `java.util.Arrays.binarySearch` requires the array to be sorted first for it to work properly. The search returns the index if the element is found; otherwise, it returns a negative value.
+This exercise searches for a specific byte (`byteKey`) in an array using binary search.
+
+Binary search finds the element’s index if present in the array; otherwise, it returns a negative value.
 
 ---
 
-Each exercise demonstrates essential concepts about arrays in Java, including initialization, randomization, searching, counting, and manipulation.
+This code provides a comprehensive look at various array operations, including creation, randomization, element counting, and more complex operations such as rotation and binary search.
