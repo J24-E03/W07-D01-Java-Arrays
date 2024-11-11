@@ -31,7 +31,11 @@ public class Tasks {
         System.out.println("The index of the searched number is: " + findIndex(1, randomNumbers));
 
         // Bonus Exercise 1
-        System.out.println("\nBonus Exercise\n" + Arrays.toString(rotate(new int[]{1, 2, 3, 4, 5})));
+        System.out.println("\nBonus Exercise 1\n" + Arrays.toString(rotate(new int[]{1, 2, 3, 4, 5})));
+
+        // Bonus Exercise 2
+        System.out.println("\nBonus Exercise 2\n" + binarySearch(new int[]{1, 2, 3, 4, 5}, 0));
+        System.out.println(binarySearch(new int[]{1, 2, 3, 4, 5}, 3));
     }
 
     private static int[] generateRandom(int length) {
@@ -100,5 +104,9 @@ public class Tasks {
         }
         array[0] = lastNumber;
         return array;
+    }
+
+    private static int binarySearch(int[] array, int number) {
+        return Arrays.binarySearch(array, number);
     }
 }
