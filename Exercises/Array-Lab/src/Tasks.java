@@ -29,6 +29,9 @@ public class Tasks {
         int[] randomNumbers = generateRandom(10);
         System.out.println("\nExercise 6\n" + Arrays.toString(randomNumbers));
         System.out.println("The index of the searched number is: " + findIndex(1, randomNumbers));
+
+        // Bonus Exercise 1
+        System.out.println("\nBonus Exercise\n" + Arrays.toString(rotate(new int[]{1, 2, 3, 4, 5})));
     }
 
     private static int[] generateRandom(int length) {
@@ -86,5 +89,16 @@ public class Tasks {
             }
         }
         return -1;
+    }
+
+    private static int[] rotate(int[] array) {
+        int lastNumber = array[array.length - 1];
+        for (int i = array.length - 1; i > 0; i--) {
+            int temporary = array[i - 1];
+            array[i] = array[i - 1];
+            array[i] = temporary;
+        }
+        array[0] = lastNumber;
+        return array;
     }
 }
